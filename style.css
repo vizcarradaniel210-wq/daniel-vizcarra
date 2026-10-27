@@ -1,0 +1,327 @@
+/* =========================================
+   SISTEMA DE CONTROL DE NOTAS ACADÉMICAS
+   Autor: Adonis Mauricio Guzmán Henríquez
+   1TB Software | Código 13 | 2026
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fondo: #09090f;
+    --tarjeta: #14141f;
+    --morado: #a855f7;
+    --violeta: #7c3aed;
+    --texto: #f8fafc;
+    --secundario: #a1a1aa;
+    --borde: #292638;
+    --verde: #22c55e;
+    --rojo: #ef4444;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background:
+        radial-gradient(ellipse at top left, #281044 0%, transparent 35%),
+        radial-gradient(ellipse at bottom right, #101e43 0%, transparent 35%),
+        var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+    padding: 35px 18px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    margin: auto;
+}
+
+/* ENCABEZADO */
+
+header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+header h1 {
+    font-size: clamp(27px, 5vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+}
+
+header h1 span {
+    color: var(--morado);
+}
+
+header p {
+    color: var(--secundario);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* TARJETAS */
+
+.card,
+section {
+    background: rgba(20, 20, 31, 0.94);
+    border: 1px solid var(--borde);
+    border-radius: 20px;
+    padding: 27px;
+    margin-bottom: 22px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+    font-size: 19px;
+    margin-bottom: 22px;
+    font-weight: 700;
+}
+
+h2::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 19px;
+    background: var(--morado);
+    border-radius: 5px;
+    margin-right: 10px;
+    vertical-align: -3px;
+}
+
+/* FORMULARIOS */
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+form label {
+    display: block;
+    color: #d4d4d8;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    background: #0d0d16;
+    border: 1px solid #343044;
+    border-radius: 11px;
+    padding: 14px 15px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--morado);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.13);
+}
+
+input::placeholder {
+    color: #686878;
+}
+
+/* CAMPOS QUE OCUPAN TODO EL ANCHO */
+
+form .completo {
+    grid-column: 1 / -1;
+}
+
+/* BOTONES */
+
+button {
+    border: none;
+    border-radius: 11px;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, var(--violeta), var(--morado));
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
+    filter: brightness(1.12);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button[hidden] {
+    display: none;
+}
+
+/* RESULTADOS */
+
+#resultado {
+    border: 1px solid #45305e;
+    background: linear-gradient(135deg, #211333, #151525);
+    border-radius: 16px;
+    padding: 22px;
+    margin-top: 20px;
+}
+
+#resultado h3 {
+    color: #d8b4fe;
+    margin-bottom: 15px;
+}
+
+#resultado p {
+    color: #e4e4e7;
+    line-height: 1.9;
+}
+
+#resultado strong {
+    color: white;
+}
+
+/* MENSAJES */
+
+#error,
+#mensajeConsulta {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #fca5a5;
+}
+
+/* CONSULTA Y ESTADÍSTICAS */
+
+#estadisticas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+}
+
+#estadisticas > div {
+    background: #0d0d16;
+    border: 1px solid var(--borde);
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+#estadisticas strong {
+    display: block;
+    font-size: 25px;
+    color: #d8b4fe;
+    margin-bottom: 6px;
+}
+
+#estadisticas span {
+    color: var(--secundario);
+    font-size: 12px;
+}
+
+/* TABLAS */
+
+#tablaContenedor {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+    font-size: 13px;
+}
+
+th {
+    text-align: left;
+    color: #d8b4fe;
+    background: #21172e;
+    padding: 15px;
+    font-weight: 700;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--borde);
+    color: #e4e4e7;
+}
+
+tr:hover td {
+    background: rgba(168, 85, 247, 0.06);
+}
+
+/* ARCHIVO */
+
+input[type="file"] {
+    padding: 10px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background: #30213f;
+    color: #e9d5ff;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 12px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    text-align: center;
+    color: #71717a;
+    font-size: 12px;
+    padding: 18px 10px;
+    line-height: 1.8;
+}
+
+/* DISEÑO RESPONSIVE */
+
+@media (max-width: 650px) {
+    body {
+        padding: 22px 12px;
+    }
+
+    .card,
+    section {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    form .completo {
+        grid-column: auto;
+    }
+
+    #estadisticas {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        letter-spacing: -0.8px;
+    }
+}
